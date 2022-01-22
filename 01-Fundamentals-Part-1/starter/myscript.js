@@ -66,36 +66,39 @@
 // checkWinner(D, K)
 
 // 2.2
-inRange = (x) => x >= 50 && x <= 300 ? true : false
-calcTip = (bill) => inRange(bill) ? bill * 0.15 : bill * 0.20
-console.log(`${calcTip(100)}`)
+inRange = (x) => (x >= 50 && x <= 300 ? true : false);
+calcTip = (bill) => (inRange(bill) ? bill * 0.15 : bill * 0.2);
+console.log(`${calcTip(100)}`);
 
 calcTips = (bills) => {
-    tips = []
-    for (let i = 0; i < bills.length; i++) {
-        tips.push(calcTip(bills[i]))
-    }
-    return tips
-}
+  tips = [];
+  for (let i = 0; i < bills.length; i++) {
+    tips.push(calcTip(bills[i]));
+  }
+  return tips;
+};
 
-bills = [125, 555, 44]
+bills = [125, 555, 44];
 
-console.log(`for bills of ${bills}, the tips would be ${calcTips(bills)}`)
+console.log(`for bills of ${bills}, the tips would be ${calcTips(bills)}`);
 
 // 2.3
 // skipped since mostly done already
 
 // 2.4
 calcTotals = (bills) => {
-    totals = []
-    tips = calcTips(bills)
-    for (let i = 0; i < bills.length; i++) {
-        totals.push(bills[i] + tips[i])
-    }
-    return totals
-}
+  totals = [];
+  tips = calcTips(bills);
+  for (let i = 0; i < bills.length; i++) {
+    totals.push(bills[i] + tips[i]);
+  }
+  return totals;
+};
 
-bills = [22, 295, 176, 440, 37, 105, 10, 110, 86, 52]
-console.log(`for bills ${bills}, tips=${calcTips(bills)}, so totals=${calcTotals(bills)}`)
+bills = [22, 295, 176, 440, 37, 105, 10, 110, 86, 52];
+console.log(
+  `for bills ${bills}, tips=${calcTips(bills)}, so totals=${calcTotals(bills)}`
+);
 
 // 3.1
+console.log("live from new york its monday night!");
