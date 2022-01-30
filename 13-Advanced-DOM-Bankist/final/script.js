@@ -190,7 +190,8 @@ const loadImg = function (entries, observer) {
   entry.target.src = entry.target.dataset.src;
 
   entry.target.addEventListener('load', function () {
-    entry.target.classList.remove('lazy-img');
+    // best to wait for the load event so that we are sure the full res img is loaded
+    entry.target.classList.remove('lazy-img'); // this is the blurred filter on top
   });
 
   observer.unobserve(entry.target);
@@ -199,7 +200,7 @@ const loadImg = function (entries, observer) {
 const imgObserver = new IntersectionObserver(loadImg, {
   root: null,
   threshold: 0,
-  rootMargin: '200px',
+  rootMargin: '200px', // for a seamless experience as this will load the img BEFORE it gets to the viewport
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));
@@ -335,10 +336,9 @@ document
     message.parentElement.removeChild(message);
   });
 
-  
 ///////////////////////////////////////
 // Styles, Attributes and Classes
-  
+
 // Styles
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
@@ -385,7 +385,6 @@ logo.classList.contains('c'); // not includes
 // Don't use
 logo.clasName = 'jonas';
 
-
 ///////////////////////////////////////
 // Types of Events and Event Handlers
 const h1 = document.querySelector('h1');
@@ -401,7 +400,6 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // h1.onmouseenter = function (e) {
 //   alert('onmouseenter: Great! You are reading the heading :D');
 // };
-
 
 ///////////////////////////////////////
 // Event Propagation in Practice
@@ -428,7 +426,6 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
 });
-
 
 ///////////////////////////////////////
 // DOM Traversing
@@ -489,7 +486,6 @@ const obsOptions = {
 
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 observer.observe(section1);
-
 
 ///////////////////////////////////////
 // Lifecycle DOM Events
